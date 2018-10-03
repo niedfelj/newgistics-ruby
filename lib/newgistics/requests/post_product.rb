@@ -57,7 +57,7 @@ module Newgistics
           xml.depth product.depth
           xml.value product.value
           xml.retailValue product.retail_value
-          xml.shopFrom product.ship_from
+          xml.shipFrom product.ship_from
           xml.countryOfOrigin product.country_of_origin
           xml.manufacture product.manufacture
           xml.isActive product.is_active
