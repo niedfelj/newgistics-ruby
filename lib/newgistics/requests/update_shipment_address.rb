@@ -34,7 +34,7 @@ module Newgistics
 
       def shipment_address_xml(xml)
         xml.updateShipment(apiKey: api_key, orderID: shipment_address.order_id) do
-          address_xml(xml)
+          address_xml(shipment_address.customer, xml)
         end
       end
 
@@ -42,19 +42,19 @@ module Newgistics
         Newgistics.configuration.api_key
       end
 
-      def address_xml(xml)
-        xml.Company shipment_address.company
-        xml.FirstName shipment_address.first_name
-        xml.LastName shipment_address.last_name
-        xml.Address1 shipment_address.address1
-        xml.Address2 shipment_address.address2
-        xml.City shipment_address.city
-        xml.State shipment_address.state
-        xml.Zip shipment_address.zip
-        xml.Country shipment_address.country
-        xml.Email shipment_address.email
-        xml.Phone shipment_address.phone
-        xml.IsResidential shipment_address.is_residential
+      def address_xml(customer, xml)
+        xml.Company customer.company
+        xml.FirstName customer.first_name
+        xml.LastName customer.last_name
+        xml.Address1 customer.address1
+        xml.Address2 customer.address2
+        xml.City customer.city
+        xml.State customer.state
+        xml.Zip customer.zip
+        xml.Country customer.country
+        xml.Email customer.email
+        xml.Phone customer.phone
+        xml.IsResidential customer.is_residential
       end
     end
   end

@@ -2,22 +2,11 @@ module Newgistics
   class ShipmentAddressUpdate
     include Newgistics::Model
 
-    attribute :id, String # shipment id 
+    attribute :id, String # shipment id
     attribute :order_id, String
 
-    attribute :first_name, String
-    attribute :last_name, String
-    attribute :company, String
-    attribute :address1, String
-    attribute :address2, String
-    attribute :city, String
-    attribute :state, String
-    attribute :postal_code, String
-    attribute :country, String
-    attribute :email, String
-    attribute :phone, String
-    attribute :fax, String
-    attribute :is_residential, Boolean
+    attribute :customer, Customer
+
     attribute :status, String
     attribute :status_notes, String
     attribute :ship_method, String
