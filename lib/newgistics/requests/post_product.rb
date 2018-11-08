@@ -58,7 +58,9 @@ module Newgistics
           xml.value product.value
           xml.retailValue product.retail_value
           xml.shipFrom product.ship_from
-          xml.countryOfOrigin product.country_of_origin
+          if product.country_of_origin
+            xml.countryOfOrigin product.country_of_origin
+          end 
           xml.manufacture product.manufacture
           xml.isActive product.is_active
 
