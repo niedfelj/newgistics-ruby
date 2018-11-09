@@ -1,13 +1,17 @@
 module Newgistics
   class StringHelper
     CAMEL_CASED_STRING_REGEX = /([a-z])([A-Z])/
-    UNDERSCORED_STRING_REGEX = /([A-Za-z\d]+)(_|\z)/
+    UNDERSCORED_STRING_REGEX = /([a-z\d]+)([A-Z]_|\z)/
     CAPITALIZED_STRING_REGEX = /\A[A-Z]/
 
     def self.camelize(string, upcase_first: true)
       string.to_s.dup.tap do |s|
-        s.gsub!(UNDERSCORED_STRING_REGEX) { $1.capitalize! || $1 }
-        s.gsub!(CAPITALIZED_STRING_REGEX) { $&.downcase! } unless upcase_first
+        if upcase_first
+          s.sub!(/^[a-z\d]*/) { |match| match.capitalize }
+        else
+          s.downcase!
+        end
+        s.gsub!(/(?:_|(\/))([a-z\d]*)/i) { $2.capitalize }
       end
     end
 
